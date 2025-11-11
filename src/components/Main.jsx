@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Main() {
     const movies = [
@@ -10,8 +10,16 @@ export default function Main() {
         { title: "Pulp Fiction", genre: "Thriller" },
     ];
 
-    const [filteredMovies, setFilteredMovies] = useState(movies);
     const [selectedGenre, setSelectedGenre] = useState("");
+    const [filteredMovies, setFilteredMovies] = useState(movies);
+
+    useEffect(() => {
+        const filtered = movies.filter(
+            (movie) =>
+                selectedGenre === "" || movie.genre === selectedGenre
+        );
+        setFilteredMovies(filtered);
+    }, [selectedGenre]);
 
     return (
         <main>
