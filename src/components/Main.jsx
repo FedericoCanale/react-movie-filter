@@ -24,28 +24,35 @@ function App() {
     }, [selectedGenre]);
 
     return (
-        <div>
-            <h1>FILM</h1>
+        <main className="container text-center py-4">
+            <h1 className="mb-4 text-primary">Film</h1>
 
-            <select
-                value={selectedGenre}
-                onChange={(e) => setSelectedGenre(e.target.value)}
-            >
-                <option value="">Tutti i Generi</option>
-                <option value="Fantascienza">Fantascienza</option>
-                <option value="Thriller">Thriller</option>
-                <option value="Romantico">Romantico</option>
-                <option value="Azione">Azione</option>
-            </select>
+            <div className="mb-4">
+                <select
+                    className="form-select w-auto d-inline-block"
+                    value={selectedGenre}
+                    onChange={(e) => setSelectedGenre(e.target.value)}
+                >
+                    <option value="">Tutti i Generi</option>
+                    <option value="Fantascienza">Fantascienza</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Romantico">Romantico</option>
+                    <option value="Azione">Azione</option>
+                </select>
+            </div>
 
-            <ul>
+            <ul className="list-group mx-auto" style={{ maxWidth: "400px" }}>
                 {filteredMovies.map((movie) => (
-                    <li key={movie.title}>
-                        {movie.title} : {movie.genre}
+                    <li
+                        key={movie.title}
+                        className="list-group-item d-flex justify-content-between align-items-center"
+                    >
+                        <span>{movie.title}</span>
+                        <em>{movie.genre}</em>
                     </li>
                 ))}
             </ul>
-        </div>
+        </main>
     );
 }
 
