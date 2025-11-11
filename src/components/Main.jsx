@@ -11,10 +11,22 @@ export default function Main() {
     ];
 
     const [filteredMovies, setFilteredMovies] = useState(movies);
+    const [selectedGenre, setSelectedGenre] = useState("");
 
     return (
         <main>
             <h1>Film</h1>
+
+            <select
+                value={selectedGenre}
+                onChange={(e) => setSelectedGenre(e.target.value)}
+            >
+                <option value="">Tutti i generi</option>
+                <option value="Fantascienza">Fantascienza</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Romantico">Romantico</option>
+                <option value="Azione">Azione</option>
+            </select>
 
             <ul>
                 {filteredMovies.map((m) => (
